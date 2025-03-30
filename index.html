@@ -28,7 +28,7 @@
 
             <h1 class="mb-4">Hangman</h1>
 
-            <div id="difficultySelection"> 
+            <div id="difficultySelection" class="row justify-content-center col-md-6 col-lg-4"> 
                 <h3>Select Difficulty</h3>
                 <button class="btn btn-success difficulty-btn" onclick="startGame('easy')">Easy</button>
                 <button class="btn btn-warning difficulty-btn" onclick="startGame('medium')">Medium</button>
@@ -41,20 +41,20 @@
 
 
 <!--Game area-->
-<div id="gameArea" class="mt-4 d-none">
-
+<div id="gameArea" class="mt-4 d-none row justify-content-center">
+    <div class="col-md-8 col-lg-6">
     <h2 id="wordDisplay" class="mb-3">_ _ _ _ _</h2>
 
     <!--Input for guessing-->
-    <div>
+    <div class ="d-flex justify-content-center gap-2">
         <input type="text" id="letterInput" maxlength="1" class="form-control d-inline-block w-auto" placeholder="Guess a letter">
         <button id="guessBtn" class="btn btn-warning" onclick="guessLetter()">Guess</button>
     </div>
 
 
-    <p id="wrongLetters" class="fw-bold text-danger"> wrong guesses: </p>
+    <p id="wrongLetters" class="fw-bold text-danger mt-2"> wrong guesses: </p>
 
-    <img id="Shamrock" src="imgs/" alt ="Shamrock Health" class="shamrock-img">
+    <img id="Shamrock" src="imgs/" alt ="Shamrock Health" class="shamrock-img img-fluid mt-3">
 
     <div class="mt-4">
         <button id="restart-btn" class="btn btn-danger" onclick="restartGame()">Restart Game</button>
