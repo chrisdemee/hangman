@@ -10,7 +10,7 @@ const wordList = [
 
 let selectedWord = ''
 let displayedWord = ''
-let wrongGuess = 0
+let wrongGuesses = 0
 let guessedLetters = []
 const maxMistakes = 6
 
@@ -60,5 +60,77 @@ function updateDifficultyDisplay(level){
     difficultyBox.classList.remove('easy', 'medium', 'hard')
 //add back appropriate class that was picked to click difficulty 
     difficultyBox.textContent = `Difficulty: ${level.charAt(0).toUpperCase() + level.slice(1)}`
+
+}
+
+function guessLetter(){
+    let inputField = document.getElementById('letterInput') //Get input field 
+    let guessedLetter = inputField.value.toLowerCase() // Converts the input to lowercase
+
+    //check if the input is a valid letter (a-z)
+    if(!guessedLetter.match(/^[a-z]$/)){
+        alert('Please enter a valid letter (A-Z)!')
+        inputField.value = '' //clears input field
+        return
+
+    }
+    //if statement checking iof the letter was alr guessed 
+    if(guessedLetters.includes(guessedLetter)){
+        alert(`You already guessed '${guessedLetter}'. Try a different letter!`)
+        inputField.value = '' //clears input field
+        return
+    } else {
+        guessedLetters.push(guessedLetter)
+    }
+
+//check if guessed letter is in selected word
+    if(selectedWord.includes(guessedletters)){
+        correctedguess(guessedLetter)
+    } else {
+        wrongGuess(guessedLetter)
+    }
+
+    inputField.value = ''
+    inputField.focus()
+}
+
+function wrongGuess(guessedLetter) {
+    //increment # of wrong guesses
+    //add guess letter to guessedLetter array
+    //check to see if # of wrong guesses is === to MaxMistakes if it is, call endgame(false)
+    wrongGuess
+    document.getElementById('wrongLetters').textContent += `${guessedLetter}`
+
+    document.getElementById('shamrock').src = `imgs/shamrock${6 - wrongGuess}.jpg`
+    if (wrongGuess === maxMistakes){
+        endGame(false)
+    }
+}
+
+function correctGuess(guessedLetter){
+    let newDisplayedWord = ''
+
+    for (let i = 0; i < selectedWord.length; i++){
+        if(selectedWord[i] === guessedLetter){
+            newDisplayedWord += guessedLetter
+
+        }else {
+            newDisplayedWord += displayedWord[i]
+        }
+    }
+
+    displayedWord = newDisplayedWord
+    document.getElementById('wordDisplay').textContent = displayedWord.split('').join(' ')
+
+    if(displayedWord.includes('_')){
+        endGame(true)
+    }
+}
+
+
+function endGame(won){
+    if (won === true){
+        setTimeout() => alert("you win"), 100
+    }
 
 }
