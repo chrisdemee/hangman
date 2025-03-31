@@ -4,6 +4,7 @@ const wordList = [
     'osamason',
     'troll',
     'meme',
+    'drank',
     'funny',
     'superdank',
 ];
@@ -15,15 +16,19 @@ let guessedLetters = []
 const maxMistakes = 6
 
 function startGame(level){
+    wrongGuesses = 0
+    guessedLetters = []
     selectedWord = getRandomWord(level)
-
+    // create placeholders for selected words 
+    displayedWord = '_'.repeat(selectedWord.length)
 
 
     //update difficulty display div
     updateDifficultyDisplay(level)
+    updateUI()
 
-    // create placeholders for selected words 
-    displayedWord = '_'.repeat(selectedWord.length)
+    
+
 
     document.getElementById('wordDisplay').textContent = displayedWord.split('').join(' ')
 
@@ -37,7 +42,8 @@ function startGame(level){
 
      document.getElementById('gameArea').classList.add("d-block")
      document.getElementById('difficultyBox').classList.add("d-block")
-
+//Auto-focus on input
+document.getElementById('letterInput').focus()
      
     
 }
@@ -58,20 +64,31 @@ function updateDifficultyDisplay(level){
 
     //remove previous difficulty classes
     difficultyBox.classList.remove('easy', 'medium', 'hard')
+    if (level === 'easy') {
+        difficultyBox.textContent = 'Difficulty: Easy'
+        difficultyBox.classList.add('easy')
+      } else if (level === 'medium') {
+        difficultyBox.textContent = 'Difficulty: Medium'
+        difficultyBox.classList.add('medium')
+      } else if (level === 'hard') {
+        difficultyBox.textContent = 'Difficulty: Hard'
+        difficultyBox.classList.add('hard')
+      }
+    }
 //add back appropriate class that was picked to click difficulty 
     difficultyBox.textContent = `Difficulty: ${level.charAt(0).toUpperCase() + level.slice(1)}`
 
-}
+
 
 function guessLetter(){
     let inputField = document.getElementById('letterInput') //Get input field 
     let guessedLetter = inputField.value.toLowerCase() // Converts the input to lowercase
 
     //check if the input is a valid letter (a-z)
-    if(!guessedLetter.match(/^[a-z]$/)){
-        alert('Please enter a valid letter (A-Z)!')
-        inputField.value = '' //clears input field
-        return
+    if (!guessedLetter.match(/^[a-z]$/)){
+        alert('Please enter a valid letter (A-Z)!') // Alert user if invalid input
+        inputField.value = '' // Clear input field
+        return // Exit function
 
     }
     //if statement checking iof the letter was alr guessed 
@@ -85,9 +102,9 @@ function guessLetter(){
 
 //check if guessed letter is in selected word
     if(selectedWord.includes(guessedletters)){
-        correctedguess(guessedLetter)
+        updateCorrectGuess(guessedLetter)
     } else {
-        wrongGuess(guessedLetter)
+        updateWrongGuess(guessedLetter)
     }
 
     inputField.value = ''
@@ -130,7 +147,11 @@ function correctGuess(guessedLetter){
 
 function endGame(won){
     if (won === true){
-        setTimeout() => alert("you win"), 100
+        setTimeout(() => alert(message), 100)
     }
 
 }
+
+function restartGame(){
+    location.reload()
+  }
