@@ -24,7 +24,7 @@
         <header>
             <!-- place navbar here -->
         </header>
-        <main class="container text-center">
+        <main class="container text-center mt-4">
 
             <h1 class="mb-4">Hangman</h1>
 
@@ -46,7 +46,7 @@
     <h2 id="wordDisplay" class="mb-3">_ _ _ _ _</h2>
 
     <!--Input for guessing-->
-    <div class ="d-flex justify-content-center gap-2">
+    <div class ="col-12 d-flex justify-content-center gap-2 ">
         <input type="text" id="letterInput" maxlength="1" class="form-control d-inline-block w-auto" placeholder="Guess a letter">
         <button id="guessBtn" class="btn btn-warning" onclick="guessLetter()">Guess</button>
     </div>
