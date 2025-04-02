@@ -4,14 +4,77 @@ h1 {
     font-style: normal;   
 }
 
-.easy {
-background-color: aqua;
+button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.medium {
-
+/* Difficulty Buttons */
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
 }
 
-.hard {
+.btn-warning {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+    color: black;
+}
 
+.btn-danger {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+
+/* Button Hover Effects */
+.btn-success:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #e0a800, #c69500);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c82333, #b21f2d);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* Guess and Restart Buttons */
+#guessBtn {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+}
+
+#guessBtn:hover {
+    background: linear-gradient(135deg, #138496, #117a8b);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(23, 162, 184, 0.3);
+}
+
+#restart-btn {
+    background: linear-gradient(135deg, #ff073a, #d90429);
+    color: white;
+}
+
+#restart-btn:hover {
+    background: linear-gradient(135deg, #d90429, #b20222);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(255, 7, 58, 0.3);
+}
+
+/* Add smooth transition effect */
+button:active {
+    transform: scale(0.95);
 }
