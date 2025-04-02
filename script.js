@@ -7,6 +7,7 @@ const wordList = [
   'drank',
   'funny',
   'superdank',
+  'willfrmthed',
 ];
 //decare variables
 let selectedWord = ''
@@ -151,14 +152,14 @@ setTimeout(() => alert(message), 100) // Display alert after short delay
 }
 
 // sound effects
-const correctSound = new Audio('sounds/correct.mp3'); 
+const correctSound = new Audio('sounds/swamp.mp3'); 
 const wrongSound = new Audio('sounds/wrong.mp3'); 
 
 function updateWrongGuess(guessedLetter) { 
     wrongGuesses++;
     document.getElementById('wrongLetters').textContent += `${guessedLetter} `;
 
-    // Play wrong guess sound
+   
     wrongSound.play();
 
     if (wrongGuesses === maxMistakes) {
@@ -181,8 +182,7 @@ function updateCorrectGuess(guessedLetter) {
     updateUI();
 
     // Play correct guess sound
-    correctSound.play();
-
+document.getElementById('correctGuess').play();
     // Check if the player has guessed all letters
     if (!displayedWord.includes('_')) {
         endGame(true);
