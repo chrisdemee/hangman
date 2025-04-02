@@ -150,7 +150,66 @@ setTimeout(() => alert(message), 100) // Display alert after short delay
 
 }
 
+// sound effects
+const correctSound = new Audio('sounds/correct.mp3'); 
+const wrongSound = new Audio('sounds/wrong.mp3'); 
+
+function updateWrongGuess(guessedLetter) { 
+    wrongGuesses++;
+    document.getElementById('wrongLetters').textContent += `${guessedLetter} `;
+
+    // Play wrong guess sound
+    wrongSound.play();
+
+    if (wrongGuesses === maxMistakes) {
+        endGame(false);
+    }
+}
+
+function updateCorrectGuess(guessedLetter) {
+    let newDisplayedWord = '';
+
+    for (let i = 0; i < selectedWord.length; i++) {
+        if (selectedWord[i] === guessedLetter) {
+            newDisplayedWord += guessedLetter; // Replace underscore with correct letter
+        } else {
+            newDisplayedWord += displayedWord[i]; // Keep existing correct letters
+        }
+    }
+
+    displayedWord = newDisplayedWord;
+    updateUI();
+
+    // Play correct guess sound
+    correctSound.play();
+
+    // Check if the player has guessed all letters
+    if (!displayedWord.includes('_')) {
+        endGame(true);
+    }
+}
+
 // /Restart Game - Reloads the page to reset everything
 function restartGame(){
   location.reload()
+
+  wrongGuesses = 0;
+  guessedLetters = [];
+
+   // hide the game area and show difficulty selection
+   document.getElementById('difficultySelection').classList.remove('d-none');
+   document.getElementById('gameArea').classList.add('d-none');
+   document.getElementById('difficultyBox').classList.add('d-none');
+
+   // reset word display to default
+   document.getElementById('wordDisplay').textContent = '_ _ _ _ _';
+    
+   // get rid of wrong guesses 
+   document.getElementById('wrongLetters').textContent = 'Wrong guesses: ';
+   
+   // resets shamrock image to full health
+   document.getElementById('Shamrock').src = 'imgs/shamrock6.jpg'; 
+
+   // gets rid of the letter input field
+   document.getElementById('letterInput').value = '';
 }
