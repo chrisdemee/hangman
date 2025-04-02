@@ -29,11 +29,20 @@ function startGame (level) {
   updateUI()
 
   //event listener to trigger guessLetter() when Enter is pressed
+// Ensure no duplicate event listeners
+document.getElementById('letterInput').removeEventListener('keypress', guessLetter);
+
+// Add event listener to trigger guessLetter() when Enter is pressed
 document.getElementById('letterInput').addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        guessLetter();
+    }
+});
+function handleKeyPress(event) {
   if (event.key === 'Enter') {
       guessLetter();
   }
-});
+}
   
   //Show Game Area/Difficulty Display , hide selection buttons
   document.getElementById('gameArea').classList.remove('d-none')
@@ -241,6 +250,8 @@ function restartGame(){
    // gets rid of the letter input field
    document.getElementById('letterInput').value = '';
 
+   
+
    updateScoreDisplay();
 }
 
@@ -248,3 +259,8 @@ function restartGame(){
 window.onload = function () {
   updateScoreDisplay();
 };
+function handleKeyPress(event) {
+  if (event.key === 'Enter') {
+      guessLetter();
+  }
+}
