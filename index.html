@@ -51,7 +51,10 @@
         <input type="text" id="letterInput" maxlength="1" class="form-control d-inline-block w-auto" placeholder="Guess a letter">
         <button id="guessBtn" class="btn btn-warning" onclick="guessLetter()">Guess</button>
     </div>
-
+    <div id="scoreTracker" class="mt-3">
+        <p id="winCount" class="fw-bold text-success">Wins: 0</p>
+        <p id="lossCount" class="fw-bold text-danger">Losses: 0</p>
+    </div>
 
     <p id="wrongLetters" class="fw-bold text-danger mt-2"> wrong guesses: </p>
 

@@ -3,10 +3,10 @@ const wordList = [
   'xaviersobased',
   'osamason',
   'troll',
-  'meme',
-  'drank',
-  'funny',
-  'superdank',
+  'che',
+  'autumn',
+  'jpegmafia',
+  'lucki',
   'willfrmthed',
 ];
 //decare variables
@@ -189,9 +189,37 @@ document.getElementById('correctGuess').play();
     }
 }
 
+// Declare score variables (they persist until page reload)
+let wins = 0;
+let losses = 0;
+
+// Update score display
+function updateScoreDisplay() {
+    document.getElementById('winCount').textContent = `Wins: ${wins}`;
+    document.getElementById('lossCount').textContent = `Losses: ${losses}`;
+}
+
+// Called when the game ends
+function endGame(won) {
+    let message = won
+        ? 'Congratulations! You guessed the word!'
+        : `Game Over! The word was "${selectedWord}".`;
+
+    setTimeout(() => alert(message), 100);
+
+    // Update score
+    if (won) {
+        wins++;
+    } else {
+        losses++;
+    }
+
+    updateScoreDisplay(); // Refresh score display
+}
+
 // /Restart Game - Reloads the page to reset everything
 function restartGame(){
-  location.reload()
+ 
 
   wrongGuesses = 0;
   guessedLetters = [];
@@ -212,4 +240,11 @@ function restartGame(){
 
    // gets rid of the letter input field
    document.getElementById('letterInput').value = '';
+
+   updateScoreDisplay();
 }
+
+// Load the score when the game starts
+window.onload = function () {
+  updateScoreDisplay();
+};
