@@ -141,6 +141,8 @@ function updateWrongGuess(guessedLetter) {
   if (wrongGuesses === maxMistakes) {
     endGame(false)
   }
+    // play wrong guess sound 
+    document.getElementById('wrongGuess').play();
 }
 
 function updateCorrectGuess(guessedLetter) {
@@ -175,7 +177,7 @@ function endGame(won) {
 
 // sound effects
 const correctSound = new Audio('sounds/swamp.mp3');
-const wrongSound = new Audio('sounds/wrong.mp3');
+const wrongSound = new Audio('sounds/pegtag.mp3');
 
 function updateCorrectGuess(guessedLetter) {
   let newDisplayedWord = '';
