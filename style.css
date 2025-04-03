@@ -3,8 +3,8 @@ h1 {
   font-size: 70px;
   font-weight: 400;
   font-style: normal;
-  text-transform: uppercase; /* All caps for a strong look */
-  color: rgb(80, 192, 202); /* Default color */
+  text-transform: uppercase; 
+  color: rgb(80, 192, 202); 
   position: relative;
   display: inline-block;
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -46,7 +46,6 @@ button {
   color: white;
 }
 
-/* Button Hover Effects */
 .btn-success:hover {
   background: linear-gradient(135deg, #218838, #1e7e34);
   transform: scale(1.05);
@@ -77,7 +76,7 @@ button {
 }
 
 #restart-btn {
-  font-size: 25px; /* Make text bigger */
+  font-size: 25px; 
 
   background: linear-gradient(135deg, #ff073a, #d90429);
   color: white;

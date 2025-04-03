@@ -95,7 +95,7 @@ function updateDifficultyDisplay(level) {
 }
 
 function updateUI() {
-  document.getElementById('wordDisplay').textContent = displayedWord.split('').join('  ') // Show word progress with spaces
+  document.getElementById('wordDisplay').textContent = displayedWord.split('').join('  ') // shows word progress with spaces
 }
 
 function guessLetter() {
@@ -104,9 +104,9 @@ function guessLetter() {
 
   //Check if input is a valid letter (A-Z)
   if (!guessedLetter.match(/^[a-z]$/)) {
-    alert('Please enter a valid letter (A-Z)!') // Alert user if invalid input
+    alert('Please enter a valid letter (A-Z)!') // alerts user if invalid input
     inputField.value = '' // Clear input field
-    return // Exit function
+    return // leaves function
   }
 
 
@@ -127,8 +127,8 @@ function guessLetter() {
     updateWrongGuess(guessedLetter)
   }
 
-  inputField.value = '' // Clear input field
-  document.getElementById('letterInput').focus() // Refocus input field for next guess
+  inputField.value = '' // clears input field
+  document.getElementById('letterInput').focus() // focuses on input field for next guess
 
 }
 
@@ -136,7 +136,7 @@ function updateWrongGuess(guessedLetter) {
   wrongGuesses++
   document.getElementById('wrongLetters').textContent += `${guessedLetter}`
   //document.getElementById('shamrock').src = `imgs/shamrock${6-wrongGuesses}.jpg`
-  let healthIndex = Math.max(0, maxMistakes - wrongGuesses); // Prevent index from going negative
+  let healthIndex = Math.max(0, maxMistakes - wrongGuesses); // prevents index from going negative
   document.getElementById('Shamrock').src = healthImages[healthIndex];
   if (wrongGuesses === maxMistakes) {
     endGame(false)
