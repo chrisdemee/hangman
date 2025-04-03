@@ -1,8 +1,20 @@
 h1 {
   font-family: "cofo-kabeltouw-stencil-20", sans-serif;
+  font-size: 70px;
   font-weight: 400;
   font-style: normal;
+  text-transform: uppercase; /* All caps for a strong look */
+  color: rgb(80, 192, 202); /* Default color */
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
+
+h1:hover {
+  transform: scale(1.1);
+  animation: gradientShift 1s infinite alternate;
+}
+
 
 button {
   font-family: "petala-pro", sans-serif;
@@ -19,7 +31,6 @@ button {
   letter-spacing: 1px;
 }
 
-/* Difficulty Buttons */
 .btn-success {
   background: linear-gradient(135deg, #28a745, #218838);
   color: white;
@@ -54,7 +65,6 @@ button {
   box-shadow: 0px 5px 15px rgba(220, 53, 69, 0.3);
 }
 
-/* Guess and Restart Buttons */
 #guessBtn {
   background: linear-gradient(135deg, #17a2b8, #138496);
   color: white;
@@ -67,6 +77,8 @@ button {
 }
 
 #restart-btn {
+  font-size: 25px; /* Make text bigger */
+
   background: linear-gradient(135deg, #ff073a, #d90429);
   color: white;
 }
@@ -77,7 +89,96 @@ button {
   box-shadow: 0px 5px 15px rgba(255, 7, 58, 0.3);
 }
 
-/* Add smooth transition effect */
 button:active {
   transform: scale(0.95);
+}
+
+#endGameMessage {
+  font-family: "Arial", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.win {
+  background-color: green;
+}
+
+.lose {
+  background-color: red;
+}
+
+#endGameContainer {
+  margin-top: 30px;
+}
+
+#restartButton {
+  margin-bottom: 20px;
+}
+
+.shamrock-img {
+  width: 175px;
+  height: auto;
+}
+
+body {
+  background-image: url("https://wallpapers.com/images/hd/blue-wave-playstation-wduza83ozb1damar.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+#difficultyBox {
+  font-size: 42px;
+  font-family: "shlop", sans-serif;
+  font-weight: 400;
+  color: rgb(151, 148, 148);
+  font-style: normal;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 8px;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.difficulty-btn {
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  margin: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.difficulty-btn:hover {
+  transform: scale(1.1);
+  background-color: black;
+  color: rgb(73, 67, 67);
+}
+
+#difficultySelection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  font-size: 42px;
+  font-family: "shlop", sans-serif;
+  font-weight: 400;
+}
+
+#scoreTracker p {
+  font-size: 42px;
+  font-family: "shlop", sans-serif;
+  font-weight: 400;
+  font-weight: bold;
+}
+
+#wrongLetters {
+  font-size: 42px;
+  font-family: "shlop", sans-serif;
+  font-weight: 400;
+  font-weight: bold;
+  color: red;
 }
