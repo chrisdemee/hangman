@@ -210,26 +210,29 @@ function updateScoreDisplay() {
 
 // Called when the game ends
 function endGame(won) {
-    let message = won
-        ? 'Congratulations! You guessed the word!'
-        : `Game Over! The word was "${selectedWord}".`;
-
-    setTimeout(() => alert(message), 100);
-
-    // Update score
-    if (won) {
-        wins++;
-    } else {
-        losses++;
-    }
-
-    updateScoreDisplay(); // Refresh score display
+  let messageBox = document.getElementById('endGameMessage'); // Get message box
+  let messageText = document.getElementById('messageText'); // Get text area inside message box
+  
+  if (won) {
+      messageText.textContent = 'Congratulations! You guessed the word!';
+      messageBox.classList.add('win'); // Add a class for styling winning message
+      wins++;
+  } else {
+      messageText.textContent = `Game Over! The word was "${selectedWord}".`;
+      messageBox.classList.add('lose'); // Add a class for styling losing message
+      losses++;
+  }
+  
+  messageBox.classList.remove('d-none'); // Make the message box visible
+  updateScoreDisplay();
 }
 
 // /Restart Game - Reloads the page to reset everything
 function restartGame(){
  
-
+  document.getElementById('endGameMessage').classList.add('d-none'); // Hide message box
+  document.getElementById('endGameMessage').classList.remove('win', 'lose'); // Remove previous styling
+  
   wrongGuesses = 0;
   guessedLetters = [];
 
